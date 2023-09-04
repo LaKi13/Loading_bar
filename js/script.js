@@ -15,26 +15,67 @@ animation();
 // dots animation
 const hideSquer = document.querySelectorAll(".hide-squer");
 function s() {
-    setTimeout(function () {
-        hideSquer[0].style.opacity = "0";
+    // First option (975Kb - 978Kb)
+    // setTimeout(() => { hideSquer[0].style.opacity = "0"; }, 500);
+    // setTimeout(() => { hideSquer[1].style.opacity = "0"; }, 1000);
+    // setTimeout(() => { hideSquer[2].style.opacity = "0"; }, 1500);
+
+    // setTimeout(() => { hideSquer[0].style.opacity = "1"; }, 2000);
+    // setTimeout(() => { hideSquer[1].style.opacity = "1"; }, 2500);
+    // setTimeout(() => {
+    //     hideSquer[2].style.opacity = "1";
+    //     if (pos === 101) return;
+    //     s();
+    // }, 3000);
+
+
+    // Second option (975Kb - 978Kb)
+    // let count = 0;
+    // if (pos === 101) return;
+    // const hide = setInterval(() => {
+    //     hideSquer[count].style.opacity = "0";
+    //     count++;
+    //     if (count === hideSquer.length) {
+    //         count = 0;
+    //         clearInterval(hide);
+    //     }
+    // }, 500);
+
+    // setTimeout(() => {
+    //     const visible = setInterval(() => {
+    //         hideSquer[count].style.opacity = "1";
+    //         count++;
+    //         if (count === hideSquer.length) {
+    //             count = 0;
+    //             clearInterval(visible);
+    //             s();
+    //         }
+    //     }, 500);
+    // }, 1500);
+
+
+    // Third option (976Kb - 1.1Mb)
+    let count1 = 0;
+    const hide1 = setInterval(() => {
+        s1(hide1, "0");
     }, 500);
-    setTimeout(function () {
-        hideSquer[1].style.opacity = "0";
-    }, 1000);
-    setTimeout(function () {
-        hideSquer[2].style.opacity = "0";
+
+    setTimeout(() => {
+        const visible1 = setInterval(() => {
+            s1(visible1, "1");
+        }, 500);
     }, 1500);
 
-    setTimeout(function () {
-        hideSquer[0].style.opacity = "1";
-    }, 2000);
-    setTimeout(function () {
-        hideSquer[1].style.opacity = "1";
-    }, 2500);
-    setTimeout(function () {
-        hideSquer[2].style.opacity = "1";
+    function s1(item1, item2) {
         if (pos === 101) return;
-        s();
-    }, 3000);
+        hideSquer[count1].style.opacity = item2;
+        count1++;
+        if (count1 === hideSquer.length) {
+            count1 = 0;
+            clearInterval(item1);
+            s();
+        }
+    }
 }
+
 s();
